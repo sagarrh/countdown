@@ -3,6 +3,7 @@
 import { useCountdown } from "@/src/hooks/Countdownhook"
 import { time } from "console";
 import { useEffect, useState } from "react";
+import Draggable from "react-draggable";
 
 
 export const Countdown = () => {
@@ -17,9 +18,70 @@ export const Countdown = () => {
 
         const updateTraditional=setInterval(()=>{
            const {days,hours,minutes,seconds}=daysuntiltraditional(until,timezone)
-           setTraditionaltime(`${days}d ${hours.toString().pad}`)
-        })
-    })
+           setTraditionaltime(`${days}d ${hours.toString().padStart(2,'0')}h ${minutes.toString().padStart(2,'0')}m ${seconds.toString().padStart(2,'0')}s`);
+        },100)
+        return ()=>{
+            clearInterval(updateFractional);
+            clearInterval(updateTraditional);
+        }
+    },[until,timezone])
+
+
+    return(
+        <Draggable bounds="parent">
+      <div className="text-center p-2 md:p-8 w-fit hover:border-1 hover:rounded-lg hover:cursor-move">
+        <div className="text-5xl md:text-8xl text-white font-bold font-apple2mono">
+          {style === "fractional" && (
+            <>
+              <span suppressHydrationWarning>
+                {fractionaltime.toString().split(".")[0]}
+              </span>
+              <span
+                className="text-2xl md:text-4xl text-neutral-200 text-opacity-75 font-normal -ml-2 md:-ml-4"
+                suppressHydrationWarning
+              >
+                .
+                {fractionaltime.toString().split(".")[1].padEnd(6, "0") ||
+                  "000000"}
+              </span>
+            </>
+          )}
+
+          {style === "traditional" && (
+            <div className="flex gap-2 items-baseline">
+              <span className="text-4xl md:text-6xl mr-4" suppressHydrationWarning>
+                {traditonaltime?.split(" ")[0]}
+              </span>
+              <span
+                className="text-2xl md:text-4xl -ml-3 md:-ml-4 text-neutral-200 text-opacity-75"
+                suppressHydrationWarning
+              >
+                {traditonaltime?.split(" ")[1]}
+              </span>
+              <span
+                className="text-2xl md:text-4xl -ml-3 md:-ml-0 text-neutral-200 text-opacity-75"
+                suppressHydrationWarning
+              >
+                {traditonaltime?.split(" ")[2]}
+              </span>
+              <span
+                className="text-2xl md:text-4xl -ml-3 md:-ml-0 text-neutral-200 text-opacity-75"
+                suppressHydrationWarning
+              >
+                {traditonaltime?.split(" ")[3]}
+              </span>
+            </div>
+          )}
+        </div>
+
+        {description && (
+          <span className="text-md md:text-2xl text-neutral-400 text-opacity-75 font-apple2mono">
+            {style === "fractional" && "days"} {until < new Date() ? "since" : "till"} {description}
+          </span>
+        )}
+      </div>
+    </Draggable>
+    )
 
 
 

@@ -2,21 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base{
-    html{
+@layer base {
+    html {
         @apply max-h-screen text-base antialiased;
     }
+    body:after {
+        content: '';
+        position: fixed;
+        top: -50%;
+        right: -50%;
+        bottom: -50%;
+        left: -50%;
+        z-index: -1;
+        @apply bg-black;
+    }
 
+    @font-face {
+        font-family: 'apple2mono';
+        src: url('/fonts/apple2mono.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
 }
 
-@layer utilities{
+@layer utilities {
     .font-apple2mono {
         font-family: 'apple2mono', monospace;
     }
-    .scrollbar-hide::-webkit-scrollbar{
+
+    .scrollbar-hide::-webkit-scrollbar {
         display: none;
     }
-    .scrollbar-hide{
+    .scrollbar-hide {
         -ms-overflow-style: none;
         scrollbar-width: none;
     }

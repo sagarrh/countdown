@@ -1,18 +1,23 @@
 'use client'
 
 import Background from '../components/Background/Background'
-import { Countdownhook } from '../hooks/Countdownhook'
+import { Countdown } from '../components/countdown/Countdown'
+import { CountdownProvider } from '../hooks/Countdownhook'
 import React from 'react'
+import Settings from '../components/settings/Settings'
+import GitHubButton from '../components/Buttons/GithubButton'
+import Share from '../components/Buttons/Share'
 
 const page = () => {
   return (
     <main className='w-full h-full flex flex-col items-center justify-center'>
-        <Countdownhook>
+        <CountdownProvider>
             <Background/>
-
-
-
-        </Countdownhook>
+            <Countdown/>
+            <Settings/>
+            <GitHubButton/>
+            <Share/>
+        </CountdownProvider>
     </main>
   )
 }
