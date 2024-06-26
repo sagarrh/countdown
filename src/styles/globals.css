@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+    html{
+        @apply max-h-screen text-base antialiased;
+    }
+
+}
+
+@layer utilities{
+    .font-apple2mono {
+        font-family: 'apple2mono', monospace;
+    }
+    .scrollbar-hide::-webkit-scrollbar{
+        display: none;
+    }
+    .scrollbar-hide{
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+}

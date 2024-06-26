@@ -1,15 +1,19 @@
-"use client";
+'use client'
 
+import Background from '../components/Background/Background'
+import { Countdownhook } from '../hooks/Countdownhook'
 import React from 'react'
 
 const page = () => {
   return (
-    <>
-    <span>
-        <div>done done done done    </div>
-    </span>
-    </>
-    
+    <main className='w-full h-full flex flex-col items-center justify-center'>
+        <Countdownhook>
+            <Background/>
+
+
+
+        </Countdownhook>
+    </main>
   )
 }
 
