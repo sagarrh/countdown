@@ -1,7 +1,7 @@
 # Countdown
 
 Create custom countdowns easily and share them with friends on a simple website.
-deployment- https://countdown-life.vercel.app/?date=2025-01-01&time=00%3A00&desc=2025&timezone=Asia%2FCalcutta&style=fractional&bg=forest.gif
+deployment- https://countdown-life.vercel.app/?date=2025-01-01&time=00%3A00&desc=2025&timezone=Asia%2FCalcutta&style=traditional&bg=bridge.png
 
 ## Features
 
